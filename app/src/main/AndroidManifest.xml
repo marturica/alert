@@ -37,9 +37,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+
         <activity
-            android:name="cl.prms.maps.MapsActivity"
-            android:label="@string/title_activity_maps">
+            android:name=".MapasActivity"
+            android:label="@string/title_activity_mapas">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cl.prms.dondelaviste.PrincipalActivity" />
