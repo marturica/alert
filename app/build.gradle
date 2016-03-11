@@ -1,11 +1,17 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('C:/Users/martu/.android/debug.keystore')
+            storePassword 'android'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "cl.prms.dondelaviste"
         minSdkVersion 15
@@ -20,8 +26,8 @@ android {
         }
         debug {
             debuggable true
+            signingConfig signingConfigs.config
         }
-
     }
 }
 
@@ -30,17 +36,21 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
-
-  //  compile 'com.android.support:appcompat-v7:23.2.0'
-//    compile 'com.android.support:design:23.2.0'
-    //compile 'com.google.android.gms:play-services:8.4.0'
-    compile 'com.google.android.gms:play-services-auth:8.3.0'
+    //  compile 'com.android.support:appcompat-v7:23.2.0'
+    //    compile 'com.android.support:design:23.2.0'
+    //compile 'com.gle.android.gms:play-services:8.4.0'
+    compile 'com.google.android.gms:play-services-auth:8.4.0'
+    //compile 'com.google.android.gms:play-services-auth:8.3.0'
     compile 'com.android.support:support-v4:23.2.0'
     compile 'com.facebook.android:facebook-android-sdk:4.6.0'
     compile('com.twitter.sdk.android:twitter-core:1.6.3@aar') {
         transitive = true;
     }
 }
+
+//apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
+
 
 
 

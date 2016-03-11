@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">dondelaviste</string>
     <string name="facebook_app_id">196493057382686</string>
-    <string name="server_client_id">815817023003-t4ctos6pak6v7cgqmvlfd1l369ebapal.apps.googleusercontent.com</string>
+    <string name="server_client_id">815817023003-saa045h06mvdn0i1tc0t2b5db80gdsm0.apps.googleusercontent.com</string>
 
     <string name="title_activity_logged_in">LoggedInActivity</string>
     <string name="logged_in">Logged In!</string>

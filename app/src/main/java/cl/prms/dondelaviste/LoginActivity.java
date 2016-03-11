@@ -67,7 +67,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via multiple providers.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private static final int RC_SIGN_IN = 9001;
 
@@ -169,7 +169,18 @@ public class LoginActivity extends AppCompatActivity {
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
+
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result.isSuccess()) {
+                GoogleSignInAccount acct = result.getSignInAccount();
+                // Get information
+                mFullName = acct.getDisplayName();
+                mEmail = acct.getEmail();
+            }
+
+           /* GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+
+
 
             if(result.isSuccess()) {
                 final GoogleApiClient client = mGoogleApiClient;
@@ -177,12 +188,28 @@ public class LoginActivity extends AppCompatActivity {
                 handleSignInResult(new Callable<Void>() {
                     @Override
                     public Void call() throws Exception {
+                        if (client != null) {
+
+                            Auth.GoogleSignInApi.signOut(client).setResultCallback(
+                                    new ResultCallback<Status>() {
+                                        @Override
+                                        public void onResult(Status status) {
+                                            Log.d(LoginActivity.class.getCanonicalName(),
+                                                    status.getStatusMessage());
+
+
+                 /*                       }
+                                    }
+                            );
+
+                        }
 
                         return null;
                     }
                 });
-
+*/
             } else {
+
                 handleSignInResult(null);
             }
         } else if(TwitterAuthConfig.DEFAULT_AUTH_REQUEST_CODE == requestCode) {
@@ -202,17 +229,17 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                //.enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
         //private void signIn(){
             Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
             startActivityForResult(signInIntent, RC_SIGN_IN);
-       // }
+        //}
 
 
-       /* final Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+       /* final Intent nInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);*/
     }
 
