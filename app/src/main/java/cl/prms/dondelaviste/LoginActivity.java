@@ -40,6 +40,7 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -67,7 +68,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via multiple providers.
  */
-public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class LoginActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 9001;
 
@@ -174,8 +175,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             if (result.isSuccess()) {
                 GoogleSignInAccount acct = result.getSignInAccount();
                 // Get information
-                mFullName = acct.getDisplayName();
-                mEmail = acct.getEmail();
+                String mFullName = acct.getDisplayName();
+                String mEmail = acct.getEmail();
+
+                handleSignInResult(new Callable<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        //LoginManager.getInstance().logOut();
+                        return null;
+                    }
+                });
+
             }
 
            /* GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
@@ -208,7 +218,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     }
                 });
 */
-            } else {
+            else {
 
                 handleSignInResult(null);
             }
@@ -229,12 +239,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                //.enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
         //private void signIn(){
-            Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+            final Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
             startActivityForResult(signInIntent, RC_SIGN_IN);
         //}
 
@@ -283,7 +293,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         } else {
             /* Login success */
             Application.getInstance().setLogoutCallable(logout);
-            startActivity(new Intent(this, LoggedInActivity.class));
+            startActivity(new Intent(this, PrincipalActivity.class));
         }
     }
 }
