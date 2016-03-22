@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    permission android:name="android.permission.READ_CONTACTS" />
 
 
     <!--
@@ -17,6 +16,7 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
 
     <application

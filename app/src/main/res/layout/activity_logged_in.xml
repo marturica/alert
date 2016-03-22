@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="auth0.com.socialloginsample.LoggedInActivity">
+    tools:context="cl.prms.dondelaviste.LoggedInActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,6 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_logged_in" />
+    <!--<include layout="@layout/content_logged_in" />-->
+    <include layout="@layout/activity_maps" />
 
 </android.support.design.widget.CoordinatorLayout>
