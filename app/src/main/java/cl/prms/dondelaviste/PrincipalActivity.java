@@ -25,14 +25,18 @@ public class PrincipalActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        /* llevado al maps activity
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Looking for your position", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
             }
-        });
+        });*/
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -87,7 +91,7 @@ public class PrincipalActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
-           //  startActivity(new Intent(this, MapasActivity.class));
+           startActivity(new Intent(this, MapsActivity.class));
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

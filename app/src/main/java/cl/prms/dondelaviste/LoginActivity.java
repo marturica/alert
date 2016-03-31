@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //checkForInstagramData();
 
-        // The private key that follows should never be public
+        // The rivate key that follows should never be public
         // (consider this when deploying the application)
         TwitterAuthConfig authConfig = new TwitterAuthConfig("YXNdBNyo2JzXlw3jUFmHna3GQ",
                 "XE28uoVDPjxv7dkJHy1k6Z7zM62flhsLXjQsYL4GgwAzUNp6Im");

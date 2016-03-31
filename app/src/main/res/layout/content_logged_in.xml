@@ -12,6 +12,8 @@
     tools:context="cl.prms.dondelaviste.LoggedInActivity"
     tools:showIn="@layout/activity_logged_in">
 
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
