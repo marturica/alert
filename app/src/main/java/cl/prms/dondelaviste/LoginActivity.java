@@ -175,8 +175,8 @@ public class LoginActivity extends AppCompatActivity {
             if (result.isSuccess()) {
                 GoogleSignInAccount acct = result.getSignInAccount();
                 // Get information
-                String mFullName = acct.getDisplayName();
-                String mEmail = acct.getEmail();
+               // String mFullName = acct.getDisplayName();
+               // String mEmail = acct.getEmail();
 
                 handleSignInResult(new Callable<Void>() {
                     @Override
@@ -293,7 +293,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             /* Login success */
             Application.getInstance().setLogoutCallable(logout);
-            startActivity(new Intent(this, PrincipalActivity.class));
+            startActivity(new Intent(this, PrinMapActivity.class));
         }
     }
 }
